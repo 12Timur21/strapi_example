@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_example_category_test_categories",
+  "info": {
+    "displayName": "TestCategory",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "test": {
+      "type": "integer"
+    }
+  }
+}

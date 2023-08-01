@@ -9,12 +9,12 @@ module.exports = () => ({
   findAllCakesWithName: async (cakeName) => {
       try {
         //Пример запроса для получения количества записей
-        const cakeCount = await strapi.entityService.count("api::order.order"); // 2
+        const cakeCount = await strapi.entityService.count("api::example.example"); // 2
 
         //Берём все записи, которые лежат в order таблице по фильтру
-        const entries = await strapi.db.query("api::order.order").findMany(
+        const entries = await strapi.db.query("api::example.example").findMany(
           {
-            //Фильтруем запрос по имени торта
+            // Фильтруем запрос по имени торта
             where: {
               title: {
                 $eqi: cakeName
@@ -33,6 +33,7 @@ module.exports = () => ({
             acc.push({
               title: item.title || "",
               description: item.description || "",
+              test: true,
             });
             return acc;
           }, []);
@@ -47,7 +48,7 @@ module.exports = () => ({
     deleteCake: async (cakeName) => {
       try {
        await strapi.db.connection.raw(
-          `DELETE FROM ORDERS WHERE title = \'${cakeName}\'`
+          `DELETE FROM examples WHERE title = \'${cakeName}\'`
         );
 
       } catch (err) {
@@ -59,9 +60,9 @@ module.exports = () => ({
       try {
         //Просто пример, но вы можете делать вставку другим способом
         await strapi.db.connection.raw(
-          `INSERT INTO ORDERS (title, description) VALUES (
-            \'${cake['title']}\', 
-            \'${cake['description']}\'
+          `INSERT INTO examples (title, description) VALUES (
+            \'${cake['cakeName']}\', 
+            \'${cake['cakeDescription']}\'
           );`
         );      
 

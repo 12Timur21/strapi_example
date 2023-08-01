@@ -30,7 +30,9 @@ module.exports = {
 
           console.log(data, "data");
 
-          ctx.body = data;
+          ctx.body = {
+            isSuccess: true,
+          };
         } catch (err) {
           ctx.badRequest("Post report controller error", { moreDetails: err });
         }
@@ -39,13 +41,13 @@ module.exports = {
     const cake = ctx.request.body;
 
     try {
-         const data = await strapi
+         await strapi
            .service("api::example.example")
            .insertCake(cake);
 
-          console.log(data, "data");
-
-          ctx.body = data;
+          ctx.body = {
+            isSuccess: true,
+          };
         } catch (err) {
           ctx.badRequest("Post report controller error", { moreDetails: err });
         }
