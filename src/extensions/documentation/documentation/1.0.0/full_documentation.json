@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-08-01T11:15:58.574Z"
+    "x-generation-date": "2023-08-08T09:58:33.916Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4463,17 +4463,8 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "attributes": {
-                    "title": {
-                      "type": "string"
-                    },
-                    "description": {
-                      "type": "string"
-                    },
-                    "test": {
-                      "type": "boolean"
-                    }
-                  }
+                  "type": "array",
+                  "$ref": "#/components/schemas/Cake"
                 }
               }
             }
@@ -4535,19 +4526,12 @@
         "parameters": [
           {
             "in": "query",
-            "name": "example",
+            "name": "cakeName",
             "required": true,
             "description": "Search by cakeName",
-            "example": {
-              "cakeName": "Test"
-            },
+            "example": "AppleCake",
             "schema": {
-              "type": "object",
-              "properties": {
-                "cakeName": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -4626,19 +4610,12 @@
         "parameters": [
           {
             "in": "query",
-            "name": "example",
+            "name": "cakeName",
             "required": true,
-            "description": "Delete by cakeName",
-            "example": {
-              "cakeName": "Test"
-            },
+            "description": "Delete cake data by cakeName",
+            "example": "AppleCake",
             "schema": {
-              "type": "object",
-              "properties": {
-                "cakeName": {
-                  "type": "string"
-                }
-              }
+              "type": "string"
             }
           }
         ],

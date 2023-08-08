@@ -21,20 +21,30 @@ module.exports = {
                   "content": {
                     "application/json": {
                       "schema": {
-                        "attributes": {
-                          "title": {
-                            "type": "string"
-                          },
-                          "description": {
-                            "type": "string"
-                          },
-                          "test": {
-                            "type": "boolean"
-                          }
-                        }
+                        "type": "array", 
+                        "$ref": "#/components/schemas/Cake"
                       }
                     }
                   }
+                  
+                  //Лучше генерировать content-type через yarn strapi generate и использовать его как $ref, т.к. тогда мы во Flutter _api.get будем получать объект с полями, а не просто dynamic
+                  // "content": {
+                  //   "application/json": {
+                  //     "schema": {
+                  //       "attributes": {
+                  //         "title": {
+                  //           "type": "string"
+                  //         },
+                  //         "description": {
+                  //           "type": "string"
+                  //         },
+                  //         "test": {
+                  //           "isActive": "boolean"
+                  //         }
+                  //       }
+                  //     }
+                  //   }
+                  // }
                 },
                 400: {
                   "description": "Bad Request",
@@ -92,21 +102,27 @@ module.exports = {
               ],
               //Тут я указываю какие данные нужно передавать в parameters для успешного запроса в controllers > example ( const { cakeName } = ctx.request.query;)
               "parameters": [
-                {
+              {
                 "in": "query",
-                "name": "example",
+                "name": "cakeName",
                 "required": true,
                 "description": "Search by cakeName",
-                "example": {"cakeName": "Test"},
+                "example": "AppleCake",
                 "schema": {
-                    "type": "object",
-                    "properties": {
-                        "cakeName": {
-                            "type": "string"
-                        },                      
-                    }
+                    "type": "string",
                 }
               },
+              // {
+              //   "in": "query",
+              //   "name": "cakeDescription",
+              //   "required": true,
+              //   "description": "Search by cakeDescription",
+              //   "example": "Cake with apples",
+              //   "schema": {
+              //       "type": "string",
+              //   }
+              // },
+              // ...
             ],
             "operationId": "get/example"
             },
@@ -181,20 +197,15 @@ module.exports = {
                 "Example"
               ],
               "parameters": [
-                {
+              {
                 "in": "query",
-                "name": "example",
+                "name": "cakeName",
                 "required": true,
-                "description": "Delete by cakeName",
-                "example": {"cakeName": "Test"},
+                "description": "Delete cake data by cakeName",
+                "example": "AppleCake",
                 "schema": {
-                    "type": "object",
-                    "properties": {
-                        "cakeName": {
-                            "type": "string"
-                        },                      
-                    }
-                }
+                    "type": "string",
+                },
               },
             ],
               "operationId": "delete/example"

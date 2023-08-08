@@ -33,7 +33,7 @@ module.exports = () => ({
             acc.push({
               title: item.title || "",
               description: item.description || "",
-              test: true,
+              isActive: true,
             });
             return acc;
           }, []);
